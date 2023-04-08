@@ -4,25 +4,25 @@ import { ReviewForm } from "./reviewForm";
 import { ReviewList } from "./reviewList";
 
 export const ProductDetails = () => {
-    const [product, setProduct] = useState({});
+
+    const [ product, setProduct ] = useState(undefined);
 
     useEffect(() => {
-        getProductById(1).then((product) => setProduct(product));
+        getProductById(1).then(product => setProduct(product));
     }, []);
 
-    const addReview = (review) => {
-        const newReviews = [...product.reviews, review];
-        setProduct({ ...product, reviews: newReviews });
-    };
+    const addReview = temp => setProduct({ ...product, ...temp });
 
-    if (!product.id){ return <>Loading...</>;}
+    if(!product) {
+        return <>Loading...</>;
+    }
 
-    return <>
+        return <>
         <div className= "container">
             <div className="row bg-body-secondary mb-4 py-2 mx-4">
                 <nav aria-label="breadcrumb" className="p-2">
                     <ul className="breadcrumb mb-0">
-                        <li className="breadcrumb-item"><a href="" className="text-primary text-decoration-none">Tasty snacks</a></li>
+                        <li className="breadcrumb-item"><a href="manifest.json" className="text-primary text-decoration-none">Tasty snacks</a></li>
                         <li className="breadcrumb-item text-body-tertiary" aria-current="page">Jif Peanut Butter, 40 ounce</li>
                     </ul>
                 </nav>
@@ -42,5 +42,4 @@ export const ProductDetails = () => {
             <ReviewForm onReviewAdded={review=> addReview({reviews:[...product.reviews, review]})} />
         </div>
     </>
-
-}
+};
