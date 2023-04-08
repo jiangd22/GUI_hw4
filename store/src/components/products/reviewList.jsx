@@ -1,11 +1,13 @@
 import { Rating } from "../common";
 
+
 export const ReviewList = ({ reviews }) => {
     return <>
         <h4 className="mx-4">Product Reviews <span className="text-secondary">({reviews.length})</span></h4>
         {reviews.length===0 && <p className="mx-4 bg-light p-3 text-dark-emphasis">Be the first to add a review!</p>}
 
-        <ul className="px-0">
+
+        <ul className="mx-4 px-0">
             {reviews.map((review, index) => {
                 return (
                     <li key={index} className="list-group-item mb-3">

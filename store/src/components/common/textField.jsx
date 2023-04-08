@@ -6,6 +6,7 @@ export const TextField = ({ label, value, setValue }) => {
                 className="form-control"
                 type="text"
                 value={value}
+                rows={6}
                 onChange={event => setValue(event.target.value)} />
         </div>
     </>

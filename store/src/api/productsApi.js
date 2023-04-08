@@ -12,8 +12,8 @@ const baseConfig = {
 export const getProductById = (productId) => new Promise((resolve, reject) => {
     axios.get(`${baseEndpoint}/${productId}`, baseConfig)
         .then(response => resolve(response.data))
-        .catch(error => {
-            alert(error);
-            reject(error);
+        .catch(response => {
+            alert(response);
+            reject(response);
         });
 });

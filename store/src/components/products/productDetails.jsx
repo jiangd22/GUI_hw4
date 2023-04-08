@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { getProductById } from "../../api/productsApi";
-import { ProductReview } from "../../models";
 import { ReviewForm } from "./reviewForm";
 import { ReviewList } from "./reviewList";
 
