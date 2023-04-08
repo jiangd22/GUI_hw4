@@ -1,24 +1,39 @@
-// import { Rating } from "../common";
+import { Rating } from "../common";
 
-// export const ReviewList = ({ reviews }) => {
-//     return <>
+export const ReviewList = ({ reviews }) => {
+    return <>
+        <h4 className="mx-4">Product Reviews <span className="text-secondary">({reviews.length})</span></h4>
+        {reviews.length===0 && <p className="mx-4 bg-light p-3 text-dark-emphasis">Be the first to add a review!</p>}
 
-//         <div className="row bg-light py-4 mx-4">
-//             <div className="col-12">
-//                 <h3 className="fs-4 fw-light">Product Reviews</h3>
-//                 <hr />
-//                 {reviews.map((review) => <div className="row mb-4">
-//                     <div className="col-2">
-//                         <Rating rating={review.rating} />
-//                     </div>
-//                     <div className="col-10">    
-//                         <p className="fs-5 fw-light">{review.comment}</p>
-//                         <p className="fs-6 fw-light text-body-tertiary">By {review.reviewer}</p>
-//                     </div>
-//                 </div>)}
+        <ul className="px-0">
+            {reviews.map((review, index) => {
+                return (
+                    <li key={index} className="list-group-item mb-3">
+                        <ul className="list-group list-group-flush">
+                            <li className="list-group-item bg-light py-0">
+                                <div className="row">
+                                    <span>{<Rating value={review.rating}/>}</span>
+                                </div>
+                            </li>
+                            <li className="list-group-item bg-light">
+                                <div className="row py-2">
+                                    <div className="col-6 text-muted">
+                                        <span>{review.userName}</span>
+                                    </div>
+                                    <div className="col-6 text-muted">
+                                        <span>{review.date}</span>
+                                    </div>
+                                </div>
+                                <div className="row pb-2">
+                                        <span>{review.comment}</span>
+                                </div>
+                            </li>
+                        </ul>
+                    
+                    </li>
+                )
+            })}
+        </ul>
+    </>
+}
 
-//             </div>
-//         </div>
-
-//     </>
-// }

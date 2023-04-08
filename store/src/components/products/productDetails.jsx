@@ -39,8 +39,8 @@ export const ProductDetails = () => {
                     <p className="fs-5 fw-light text-body-tertiary">{product.description}</p>
                 </div>
             </div>
-            {/* <ReviewList reviews={product.reviews} />
-            <ReviewForm addReview={review=> addReview({reviews:[...product.reviews, review]})} /> */}
+            <ReviewList reviews={product.reviews} />
+            <ReviewForm onReviewAdded={review=> addReview({reviews:[...product.reviews, review]})} />
         </div>
     </>
 
