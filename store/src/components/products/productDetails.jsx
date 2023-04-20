@@ -1,17 +1,23 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
+import { useParams } from "react-router-dom";
 import { getProductById } from "../../api/productsApi";
 import { ReviewForm } from "./reviewForm";
 import { ReviewList } from "./reviewList";
+import { Link } from "react-router-dom";
+import { CartContext } from "../../context/cartContext";
+import { addReview } from "../../api/productsApi";
 
 export const ProductDetails = () => {
+    const params = useParams();
+    const context = useContext(CartContext);
 
     const [ product, setProduct ] = useState(undefined);
 
     useEffect(() => {
-        getProductById(1).then(product => setProduct(product));
+        getProductById(params.ProductId).then(x => setProduct(x));
     }, []);
 
-    const addReview = temp => setProduct({ ...product, ...temp });
+    // const addReview = temp => setProduct({ ...product, ...temp });
 
     if(!product) {
         return <>Loading...</>;
@@ -38,8 +44,29 @@ export const ProductDetails = () => {
                     <p className="fs-5 fw-light text-body-tertiary">{product.description}</p>
                 </div>
             </div>
+            
+            <div className="row bg-light">
+                <span className="text-end p-5">
+                    <Link to="/cart">
+                        <button type="button" className="btn btn-warning" onClick={
+                            () => context.addToCart(product) 
+                        }>Add to Cart
+                        </button>
+                    </Link>
+                </span>
+            </div>
+
             <ReviewList reviews={product.reviews} />
-            <ReviewForm onReviewAdded={review=> addReview({reviews:[...product.reviews, review]})} />
+            <ReviewForm onReviewAdded={
+                review => {
+                    addReview(product.id, review).then(x => {
+                        const _product = {...product};
+                        _product.reviews.push(x);
+                        setProduct(_product);
+                    });
+
+                }
+            } />
         </div>
     </>
 };
