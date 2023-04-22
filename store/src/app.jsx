@@ -9,7 +9,7 @@ export const App = () => {
             <BrowserRouter>
                 <Link to="/" className="text-decoration-none">
                     <div className="container">
-                        <header className="row text-white fs-5 bg-dark py-2 mx-4 mb-0">Store</header>
+                        <header className="row text-white fs-5 bg-dark p-2 mx-4 mb-0 fw-light">Store</header>
                     </div>
                 </Link>
                 <Routes>
