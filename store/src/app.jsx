@@ -1,6 +1,6 @@
-import { CartContextProvider } from "../context/cartContext";
+import { CartContextProvider } from "./context/cartContext";
 import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
-import { Routes as AuthorizedRoutes } from "../routes";
+import { Routes as AuthorizedRoutes } from "./routes";
 
 export const App = () => {
     <>
