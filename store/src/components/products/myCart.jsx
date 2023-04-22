@@ -34,7 +34,7 @@ export const MyCart = () => {
             </tbody>
             <tfoot>
                 <tr>
-                    <th className="border-bottom-0"></th> {/* Intentionally left empty */}
+                    <th className="border-bottom-0"></th> 
                     <th className="border-bottom-0"></th>
                     <th className="border-bottom-0 text-end">${context.cart.total}</th>
                 </tr>

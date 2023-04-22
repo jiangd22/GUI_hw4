@@ -67,7 +67,6 @@ export const ProductDetails = () => {
                         _product.reviews.push(x);
                         setProduct(_product);
                     });
-
                 }
             } />
         </div>
