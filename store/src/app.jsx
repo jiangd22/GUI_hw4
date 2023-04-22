@@ -3,7 +3,8 @@ import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
 import { Routes as AuthorizedRoutes } from "./routes";
 
 export const App = () => {
-    <>
+    return(
+        <>
         <CartContextProvider>
             <BrowserRouter>
                 <Link to="/" className="text-decoration-none">
@@ -20,5 +21,6 @@ export const App = () => {
                 </Routes>
             </BrowserRouter>
         </CartContextProvider>
-    </>
+        </> 
+    );
 }

@@ -8,13 +8,16 @@ import { CartContext } from "../../context/cartContext";
 import { addReview } from "../../api/productsApi";
 
 export const ProductDetails = () => {
-    const params = useParams();
+
     const context = useContext(CartContext);
 
     const [ product, setProduct ] = useState(undefined);
 
+    const params = useParams();
+    console.log(params);
+    console.log(params.productId);
     useEffect(() => {
-        getProductById(params.ProductId).then(x => setProduct(x));
+        getProductById(params.productId).then(x => setProduct(x));
     }, []);
 
     // const addReview = temp => setProduct({ ...product, ...temp });
@@ -28,7 +31,7 @@ export const ProductDetails = () => {
             <div className="row bg-body-secondary mb-4 py-2 mx-4">
                 <nav aria-label="breadcrumb" className="p-2">
                     <ul className="breadcrumb mb-0">
-                        <li className="breadcrumb-item"><a href="manifest.json" className="text-primary text-decoration-none">Tasty snacks</a></li>
+                        <li className="breadcrumb-item"><a href="/" className="text-primary text-decoration-none">Tasty snacks</a></li>
                         <li className="breadcrumb-item text-body-tertiary" aria-current="page">Jif Peanut Butter, 40 ounce</li>
                     </ul>
                 </nav>
