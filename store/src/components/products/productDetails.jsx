@@ -20,7 +20,6 @@ export const ProductDetails = () => {
         getProductById(params.productId).then(x => setProduct(x));
     }, []);
 
-    // const addReview = temp => setProduct({ ...product, ...temp });
 
     if(!product) {
         return <>Loading...</>;
